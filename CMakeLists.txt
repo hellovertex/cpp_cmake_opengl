@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 # todo: Add Semantic Versioning
 project(c_cpp)
+find_package(OpenGL REQUIRED)
 
 # todo: try multiple generators
 add_executable(glfwTest src/main.cpp)
@@ -23,7 +24,7 @@ target_link_directories(glfwTest
 )
 # link non-custom libraries
 target_link_libraries(glfwTest
-        PRIVATE glfw3
+        PRIVATE glfw
         PRIVATE pthread
         PRIVATE dl
         PRIVATE GL

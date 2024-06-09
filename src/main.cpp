@@ -1,6 +1,7 @@
-extern "C" {
-    #include "GLFW/glfw3.h"
-}
+//extern "C" {
+//    #include "GLFW/glfw3.h"
+//}
+#include <GLFW/glfw3.h>
 // Linux:
 //  g++ main.cpp -o glwfTest -I`pwd`/include/GLFW -L`pwd`/lib -lglfw3
 // throws undefined reference pthread_thread.c so we must link additional libraries
