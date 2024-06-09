@@ -1,2 +1,2 @@
 #!/bin/bash
-# todo
+./out/build/glfwTest

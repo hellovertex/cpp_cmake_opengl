@@ -22,11 +22,23 @@ target_include_directories(glfwTest
 target_link_directories(glfwTest
         PRIVATE external/glfw/src
 )
-# link non-custom libraries
+
+#[[
+GLFW is essentially a wrapper of various platform-specific APIs and therefore needs to link against
+many different system libraries. If you are using GLFW as a shared library / dynamic library / DLL
+then it takes care of these links. However, if you are using GLFW as a static library then your executable
+ will need to link against these libraries.
+
+On Windows and macOS, the list of system libraries is static and can be hard-coded into your build
+environment. See the section for your development environment below. On Linux and other Unix-like
+operating systems, the list varies but can be retrieved in various ways as described below.
+#]]
 target_link_libraries(glfwTest
         PRIVATE glfw
-        PRIVATE pthread
-        PRIVATE dl
-        PRIVATE GL
-        PRIVATE X11
+        $<$<NOT:$<PLATFORM_ID:Windows>>:pthread>
+        $<$<NOT:$<PLATFORM_ID:Windows>>:dl>
+        $<$<NOT:$<PLATFORM_ID:Windows>>:GL>
+        $<$<NOT:$<PLATFORM_ID:Windows>>:X11>
+        $<$<PLATFORM_ID:Windows>:opengl32>
+        $<$<PLATFORM_ID:Windows>:gdi32>
 )
