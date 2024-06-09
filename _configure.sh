@@ -1,2 +1,2 @@
 #!/bin/bash
-# todo: build/linux build/windows
+cmake -S . -B out/build

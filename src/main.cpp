@@ -1,5 +1,5 @@
 extern "C" {
-    #include "../include/GLFW/glfw3.h"
+    #include "GLFW/glfw3.h"
 }
 // Linux:
 //  g++ main.cpp -o glwfTest -I`pwd`/include/GLFW -L`pwd`/lib -lglfw3

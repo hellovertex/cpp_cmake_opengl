@@ -1,2 +1,2 @@
 #!/bin/bash
-# todo
+cd out/build && make
