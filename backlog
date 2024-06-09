@@ -1,4 +1,4 @@
-2. include OpenGL
+2. include OpenGL using glad
 
 3. write .sh scripts to work with toolchain file using args
 
