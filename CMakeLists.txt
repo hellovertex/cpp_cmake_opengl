@@ -8,16 +8,19 @@ project(c_cpp)
 find_package(OpenGL REQUIRED)
 
 # todo: try multiple generators
-add_executable(glfwTest src/main.cpp)
+add_executable(glfwTest
+        src/main.cpp
+        src/glad.c
+)
 
 # load custom modules via src/CMakeLists.txt
 add_subdirectory(src)  # alias to 'Add another CMakeLists.txt'
 # load external modules via their CMakeLists.txt
 add_subdirectory(external/glfw)
 
-# add GLFW headers
 target_include_directories(glfwTest
         PUBLIC external/glfw/include
+        PUBLIC external/glad/include
 )
 target_link_directories(glfwTest
         PRIVATE external/glfw/src
@@ -43,4 +46,3 @@ target_link_libraries(glfwTest
         $<$<PLATFORM_ID:Windows>:opengl32>
         $<$<PLATFORM_ID:Windows>:gdi32>
 )
-

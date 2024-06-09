@@ -2,6 +2,7 @@
 //    #include "GLFW/glfw3.h"
 //}
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 // todo:
 //  1. rebuild GLFW using their cmake but for another platform (WINDOWS)
