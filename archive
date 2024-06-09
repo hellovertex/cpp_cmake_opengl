@@ -1,0 +1,25 @@
+// Linux:
+//  g++ main.cpp -o glwfTest -I`pwd`/include/GLFW -L`pwd`/lib -lglfw3
+// throws undefined reference pthread_thread.c so we must link additional libraries
+// g++ main.cpp -o build/glwfTest -I`pwd`/include/GLFW -L`pwd`/lib -lglfw3 -lpthread -ldl -lGL -lX11
+// OK
+
+// Windows:
+// x86_64-w64-mingw32-g++-posix main.cpp -o glfwTest -I`pwd`/include/GLFW -L`pwd`/lib -lglfw3 -lpthread -ldl -lGL -lX11
+// /usr/bin/x86_64-w64-mingw32-ld: cannot find -ldl
+// /usr/bin/x86_64-w64-mingw32-ld: cannot find -lGL
+// /usr/bin/x86_64-w64-mingw32-ld: cannot find -lX11
+// removing them does not fix the issue:
+// /usr/bin/x86_64-w64-mingw32-ld: /tmp/ccrCipIh.o:main.cpp:(.text+0xe): undefined reference to `glfwInit'
+// should include instead opengl32 and gdi32
+// x86_64-w64-mingw32-g++-posix main.cpp -o glfwTest -I`pwd`/include/GLFW -L`pwd`/lib -lglfw3 -lopengl32 -lgdi32
+
+
+
+0. compile once for linux into out/build
+
+1. add toolchain file to compile for windows
+    1.1 fix loading -ldl, -lGL, -lX11
+OR
+1. try building same codebase on Windows VM
+(is it easier than cross compiling?)

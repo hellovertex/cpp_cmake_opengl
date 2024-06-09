@@ -1,2 +1,2 @@
 #!/bin/bash
-./out/build/glfwTest
+./out/build_linux/glfwTest

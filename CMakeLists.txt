@@ -33,6 +33,7 @@ On Windows and macOS, the list of system libraries is static and can be hard-cod
 environment. See the section for your development environment below. On Linux and other Unix-like
 operating systems, the list varies but can be retrieved in various ways as described below.
 #]]
+# todo: add glad https://github.com/enkisoftware/GLFW-CMake-starter/blob/main/CMakeLists.txt
 target_link_libraries(glfwTest
         PRIVATE glfw
         $<$<NOT:$<PLATFORM_ID:Windows>>:pthread>
@@ -42,3 +43,4 @@ target_link_libraries(glfwTest
         $<$<PLATFORM_ID:Windows>:opengl32>
         $<$<PLATFORM_ID:Windows>:gdi32>
 )
+
