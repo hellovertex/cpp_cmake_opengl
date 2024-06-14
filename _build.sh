@@ -1,2 +1,2 @@
 #!/bin/bash
-cd out/build_linux && make
+cd out/build_linux && make && cd ../..

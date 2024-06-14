@@ -1,8 +1,35 @@
 2. include OpenGL using glad
 
-3. Use CPack to generate .deb and .msi
+3. minimal unit test example for c++
+3.1 todo: fix Ctest
 
-4. write .sh scripts to work with toolchain file using args
 
+
+
+Later:
+- learn glfw read docs or if lazy start with https://www.youtube.com/watch?v=XH82zuPSPkI
+- Use CPack to generate .deb and .msi
+- write .sh scripts to work with toolchain file using args
+
+
+
+
+# Adding a new class:
+
+1. Create .h file
+1.1 add to `target_include_directories`
+1.2 add #include "myheader.h"
+2. Create .cpp / .cc file
+2.1 add to `add_executable`
+3. add namespace inside .h and .cc files
+3.1 call MyNamespace::function
+
+
+# Adding gtest
+
+1. Add Gtest setup cmake shenanigans
+2. write test_dispatcher.cpp which sets Test(glfwTest, ...) and #include <gtest/gtest.h>
+3. in cmakelists.txt write include(GoogleTest) \n gtest_discover_tests(glfwTest)
+    which automagically detects test
 
 
