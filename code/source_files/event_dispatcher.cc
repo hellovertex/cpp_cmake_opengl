@@ -13,5 +13,4 @@ namespace EventDispatcher {
     class EventDispatcher {
 
     };
-
 }
