@@ -32,4 +32,7 @@ Later:
 3. in cmakelists.txt write include(GoogleTest) \n gtest_discover_tests(glfwTest)
     which automagically detects test
 
-
+# when to we have to write a user defined copy constructor?
+- rule of five prior to C++11
+- now always use smart pointers unless writing generic classes,
+  in which case fallback to rule of five
