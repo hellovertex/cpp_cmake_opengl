@@ -50,3 +50,5 @@ cmake-build-debug
 .idea
 build/
 [Bb][Uu][Ii][Ll][Dd]
+
+out/
