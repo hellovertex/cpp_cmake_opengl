@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
-// Demonstrate some basic assertions.
-TEST(glfwTest, BasicAssertions) {
-// Expect two strings not to be equal.
-EXPECT_STRNE("hello", "world");
-// Expect equality.
-EXPECT_EQ(7 * 6, 42);
+#include "event_dispatcher.h"
+TEST(SampleTest, AssertionTrue) {
+    EventDispatcher::hello();
+
+    ASSERT_TRUE(true);
 }

@@ -18,7 +18,7 @@ Later:
 
 1. Create .h file
 1.1 add to `target_include_directories`
-1.2 add #include "myheader.h"
+1.2 add #include "myheader.h" to main.cc and tests_...
 2. Create .cpp / .cc file
 2.1 add to `add_executable`
 3. add namespace inside .h and .cc files

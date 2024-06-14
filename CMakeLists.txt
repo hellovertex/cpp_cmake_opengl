@@ -7,50 +7,32 @@ set(CMAKE_CXX_STANDARD 17)
 project(c_cpp)
 
 find_package(OpenGL REQUIRED)
-
-# see https://google.github.io/googletest/quickstart-cmake.html#set-up-a-project
-# todo fix warning:
-#cmake_policy(SET CMP0135 NEW)
-include(FetchContent)
-FetchContent_Declare(
-        googletest
-        URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-)
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
-# see https://google.github.io/googletest/quickstart-cmake.html#create-and-run-a-binary
-#enable_testing() https://stackoverflow.com/questions/13550153/no-tests-found-when-using-gtest-with-cmake-ctest
-include(CTest)
-
+# --------------------------------------------------------------------------- #
+# ------------------------------ glfwTest ----------------------------------- #
+# --------------------------------------------------------------------------- #
 # todo: try multiple generators
 add_executable(glfwTest
-        code/sources/main.cc
-        code/sources/glad.c
-        code/sources/event_dispatcher.cc
-        tests/test_dispatcher.cc
+        code/source_files/main.cc
+        code/source_files/glad.c
+        code/source_files/event_dispatcher.cc
 )
-add_subdirectory(tests)
 
 # todo: watch https://www.youtube.com/watch?v=bsXLMQ6WgIk
 # load custom modules via code/CMakeLists.txt
 add_subdirectory(code)  # alias to 'Add another CMakeLists.txt'
-# load external modules via their CMakeLists.txt
-add_subdirectory(external/glfw)
-
-
+# load lib modules via their CMakeLists.txt
+add_subdirectory(lib/glfw)
 
 target_include_directories(glfwTest
         # Third party
-        PUBLIC external/glfw/include
-        PUBLIC external/glad/include
+        PUBLIC lib/glfw/include
+        PUBLIC lib/glad/include
         # Custom
-        PRIVATE code/headers
-#        PUBLIC external/linmath/include
+        PRIVATE include
+#        PUBLIC lib/linmath/include
 )
 target_link_directories(glfwTest
-        PRIVATE external/glfw/src
+        PRIVATE lib/glfw/src
 )
 
 #[[
@@ -66,7 +48,7 @@ operating systems, the list varies but can be retrieved in various ways as descr
 # todo: add glad https://github.com/enkisoftware/GLFW-CMake-starter/blob/main/CMakeLists.txt
 target_link_libraries(glfwTest
         PRIVATE glfw
-        PRIVATE GTest::gtest_main
+#        PRIVATE GTest::gtest_main
         #        PRIVATE linmath
         $<$<NOT:$<PLATFORM_ID:Windows>>:pthread>
         $<$<NOT:$<PLATFORM_ID:Windows>>:dl>
@@ -75,3 +57,42 @@ target_link_libraries(glfwTest
         $<$<PLATFORM_ID:Windows>:opengl32>
         $<$<PLATFORM_ID:Windows>:gdi32>
 )
+
+# --------------------------------------------------------------------------- #
+# -------------------------------- GTEST ------------------------------------ #
+# --------------------------------------------------------------------------- #
+# see https://google.github.io/googletest/quickstart-cmake.html#set-up-a-project
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+# This makes the gtest headers available
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+# see https://google.github.io/googletest/quickstart-cmake.html#create-and-run-a-binary
+#https://stackoverflow.com/questions/13550153/no-tests-found-when-using-gtest-with-cmake-ctest
+#include(CTest)
+enable_testing()
+
+# Add test executable
+add_executable(my_tests
+        code/source_files/event_dispatcher.cc
+        tests/tests_main.cc
+        tests/test_dispatcher.cc
+        # other test files
+)
+
+target_include_directories(my_tests
+        PRIVATE include
+)
+target_link_libraries(my_tests
+        GTest::gtest_main
+)
+
+# Include tests in the testing framework
+include(GoogleTest)
+gtest_discover_tests(my_tests)
