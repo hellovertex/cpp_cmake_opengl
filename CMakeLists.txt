@@ -10,11 +10,15 @@ find_package(OpenGL REQUIRED)
 # --------------------------------------------------------------------------- #
 # ------------------------------ glfwTest ----------------------------------- #
 # --------------------------------------------------------------------------- #
+set(
+        sourcefiles
+        code/source_files/event_dispatcher.cc
+)
 # todo: try multiple generators
 add_executable(glfwTest
         code/source_files/main.cc
         code/source_files/glad.c
-        code/source_files/event_dispatcher.cc
+        ${sourcefiles}
 )
 
 # todo: watch https://www.youtube.com/watch?v=bsXLMQ6WgIk
@@ -80,7 +84,7 @@ enable_testing()
 
 # Add test executable
 add_executable(my_tests
-        code/source_files/event_dispatcher.cc
+        ${sourcefiles}
         tests/tests_main.cc
         tests/test_dispatcher.cc
         # other test files

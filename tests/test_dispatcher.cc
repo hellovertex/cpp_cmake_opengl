@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "event_dispatcher.h"
+
 TEST(SampleTest, AssertionTrue) {
     EventDispatcher::hello();
 
