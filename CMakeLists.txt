@@ -65,6 +65,8 @@ target_link_libraries(glfwTest
         $<$<PLATFORM_ID:Windows>:opengl32>
         $<$<PLATFORM_ID:Windows>:gdi32>
 )
+include(GNUInstallDirs)
+install(TARGETS glfwTest)
 
 # --------------------------------------------------------------------------- #
 # -------------------------------- GTEST ------------------------------------ #

@@ -1,12 +1,13 @@
 4. write powershell scripts to configure, build, run and test on windows
 5. Use CPack to generate .deb and .msi
+https://cmake.org/cmake/help/book/mastering-cmake/chapter/Packaging%20With%20CPack.html
 6. create installable glfw example
 
 
 Later:
 - learn glfw read docs or if lazy start with https://www.youtube.com/watch?v=XH82zuPSPkI
 - write .sh scripts to work with toolchain file using args
-
+- move gtest code to designated CMakeLists.txt
 ## WINDOWS ##
 - need to configure via cmake -S . -B out/build_windows
 - build from .sln file app + tests separately
