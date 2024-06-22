@@ -23,3 +23,8 @@
 OR
 1. try building same codebase on Windows VM
 (is it easier than cross compiling?)
+
+2. include OpenGL using glad
+
+3. minimal unit test example for c++
+

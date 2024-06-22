@@ -10,10 +10,10 @@ find_package(OpenGL REQUIRED)
 # --------------------------------------------------------------------------- #
 # ------------------------------ glfwTest ----------------------------------- #
 # --------------------------------------------------------------------------- #
-set(
-        sourcefiles
+set(sourcefiles
         code/source_files/event_dispatcher.cc
 )
+
 # todo: try multiple generators
 add_executable(glfwTest
         code/source_files/main.cc
@@ -27,14 +27,18 @@ add_subdirectory(code)  # alias to 'Add another CMakeLists.txt'
 # load lib modules via their CMakeLists.txt
 add_subdirectory(lib/glfw)
 
+# pointers to header files
 target_include_directories(glfwTest
-        # Third party
+        # Third party headers
         PUBLIC lib/glfw/include
         PUBLIC lib/glad/include
-        # Custom
+        # Custom headers
         PRIVATE include
 #        PUBLIC lib/linmath/include
 )
+
+# path to glfw library that has been created using `add_library` in
+#  the glfw-CMakeLists.txt file
 target_link_directories(glfwTest
         PRIVATE lib/glfw/src
 )

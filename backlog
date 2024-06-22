@@ -1,14 +1,10 @@
-2. include OpenGL using glad
-
-3. minimal unit test example for c++
-3.1 todo: fix Ctest
-
-
+4. write powershell scripts to configure, build, run and test on windows
+5. Use CPack to generate .deb and .msi
+6. create installable glfw example
 
 
 Later:
 - learn glfw read docs or if lazy start with https://www.youtube.com/watch?v=XH82zuPSPkI
-- Use CPack to generate .deb and .msi
 - write .sh scripts to work with toolchain file using args
 
 ## WINDOWS ##
