@@ -11,7 +11,10 @@ Later:
 - Use CPack to generate .deb and .msi
 - write .sh scripts to work with toolchain file using args
 
-
+## WINDOWS ##
+- need to configure via cmake -S . -B out/build_windows
+- build from .sln file app + tests separately
+-
 
 
 # Adding a new class:
