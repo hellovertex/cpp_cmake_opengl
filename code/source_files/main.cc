@@ -38,6 +38,7 @@ const unsigned int SCR_HEIGHT = 600;
 int main(int argc, char** argv)
 {
     EventDispatcher::hello();
+    // todo: move below code to window class
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();

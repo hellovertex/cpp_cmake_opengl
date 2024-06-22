@@ -1,7 +1,7 @@
 4. write powershell scripts to configure, build, run and test on windows
-5. Use CPack to generate .deb and .msi
+5. Use CPack to generate .deb and .msi / create installable glfw example
 https://cmake.org/cmake/help/book/mastering-cmake/chapter/Packaging%20With%20CPack.html
-6. create installable glfw example
+6. 
 
 
 Later:
