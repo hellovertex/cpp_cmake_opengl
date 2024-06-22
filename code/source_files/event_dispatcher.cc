@@ -7,9 +7,9 @@
 
 // todo: create EventDispatcher object inside namespace EventDispatcher
 namespace EventDispatcher {
-//    void hello() {
-//        std::cout << "Hello From Dispatcher";
-//    }
+    void hello() {
+        std::cout << "Hello From Dispatcher";
+    }
     // todo: when can I use structs and handle memory manually, and when is it mandatory
     //  to use c++ RAII? --> use structs only for PODs
     //  -- https://stackoverflow.com/questions/54585/when-should-you-use-a-class-vs-a-struct-in-c
